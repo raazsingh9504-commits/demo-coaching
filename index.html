@@ -2,101 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elite Coaching Institute</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
-body{
-margin:0;font-family:Poppins;background:#f4f6fb;color:#222;transition:.4s
-}
-.dark{background:#0e0e11;color:white}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter;background:#f6f8fc;color:#111;transition:.3s}
+.dark{background:#0e0e12;color:#fff}
 
-section{padding:70px 20px;text-align:center}
-h2{margin-bottom:20px}
-
+/* NAVBAR (GLASS) */
 nav{
-position:fixed;top:0;width:100%;
+position:fixed;top:0;width:100%;z-index:999;
 background:rgba(255,255,255,.7);
-backdrop-filter:blur(10px);
-padding:12px 20px;
-display:flex;justify-content:space-between;
-z-index:50
+backdrop-filter:blur(15px);
+display:flex;justify-content:space-between;align-items:center;
+padding:14px 20px;
 }
 .dark nav{background:rgba(0,0,0,.6)}
+nav b{font-size:18px}
+.btn{background:#2563eb;color:white;padding:10px 22px;border-radius:30px;text-decoration:none}
 
-.btn{
-padding:10px 20px;border-radius:30px;
-background:#2563eb;color:white;
-text-decoration:none
-}
+/* HERO IMAGE */
+.hero{margin-top:70px;width:100%;aspect-ratio:16/9;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover}
 
-/* Splash */
-#splash{position:fixed;inset:0;background:black;display:flex;align-items:center;justify-content:center;z-index:999}
-#splash img{width:300px;border-radius:20px}
+/* SECTIONS */
+section{padding:70px 20px;text-align:center}
+h2{font-size:32px;margin-bottom:15px}
+p{opacity:.8}
 
-/* Hero */
-.hero{
-margin-top:60px;
-background:url(Holder.png) center/cover;
-height:70vh;
-display:flex;align-items:center;justify-content:center;
-}
-.hero div{
-background:rgba(0,0,0,.5);
-padding:40px;border-radius:20px;color:white
-}
+/* CAROUSEL */
+.carousel{max-width:1100px;margin:40px auto;border-radius:18px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.15)}
+.carousel img{width:100%;display:none}
+.carousel img.active{display:block}
 
-/* Carousel */
-.slides img{width:100%;display:none}
-.slides img.active{display:block}
+/* LABS */
+.labs{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
+.labs img{width:300px;max-width:90%;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,.15)}
 
-/* Cards */
-.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+/* GRID */
+.grid{display:grid;gap:25px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:1100px;margin:auto}
 .card{
-background:white;padding:25px;border-radius:18px;
-box-shadow:0 15px 30px rgba(0,0,0,.1);
+background:white;padding:30px;border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
 transition:.3s
 }
-.card:hover{transform:translateY(-8px)}
-.dark .card{background:#1b1b22}
+.card:hover{transform:translateY(-10px)}
+.dark .card{background:#18181f}
+.price{font-size:28px;color:#2563eb;font-weight:700}
 
-/* Labs */
-.labs img{width:30%;margin:5px;border-radius:12px}
-
-/* Pricing */
-.price{font-size:28px;color:#2563eb}
-
-/* Inputs */
+/* CONTACT */
 input,textarea{
-width:90%;padding:12px;margin:8px;border-radius:10px;border:1px solid #ccc
+width:90%;max-width:500px;padding:12px;margin:10px;
+border-radius:10px;border:1px solid #ccc
 }
 
-/* WhatsApp */
-.whatsapp{
-position:fixed;right:15px;bottom:20px;
-animation:bounce 2s infinite
+/* FOOTER */
+footer{
+background:#0f172a;color:white;padding:40px 20px;text-align:center
 }
-.whatsapp img{width:50px}
-@keyframes bounce{50%{transform:translateY(-10px)}}
+footer p{opacity:.7}
 
-/* Dark */
+/* WHATSAPP */
+.whatsapp{position:fixed;right:20px;bottom:20px}
+.whatsapp img{width:55px}
+
+/* DARK TOGGLE */
 .toggle{
-position:fixed;left:15px;bottom:20px;
+position:fixed;left:20px;bottom:20px;
 background:black;color:white;padding:8px 12px;border-radius:10px
 }
 
-/* Reveal */
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(40px);transition:1s}
 .reveal.active{opacity:1;transform:none}
 </style>
 </head>
 
 <body>
-
-<div id="splash"><img src="20260218_101858.jpg"></div>
 
 <nav>
 <b>Elite Coaching</b>
@@ -105,16 +91,19 @@ background:black;color:white;padding:8px 12px;border-radius:10px
 
 <div class="toggle" onclick="dark()">🌙</div>
 
+<!-- HERO -->
 <div class="hero">
-<div>
-<h1>Future Starts Here</h1>
-<p>Smart Classes • Expert Faculty • Proven Results</p>
-<a class="btn" href="#pricing">View Courses</a>
-</div>
+<img src="Holder.png">
 </div>
 
-<div class="slides">
-<img src="screen 1.jpg" class="active">
+<section class="reveal">
+<h2>Future Starts Here</h2>
+<p>Smart Classes • Expert Faculty • Proven Results</p>
+</section>
+
+<!-- CAROUSEL -->
+<div class="carousel reveal">
+<img src="Screen 1.jpg" class="active">
 <img src="screen 2.jpg">
 <img src="screen 3.jpg">
 <img src="screen 4.jpg">
@@ -122,72 +111,58 @@ background:black;color:white;padding:8px 12px;border-radius:10px
 </div>
 
 <section class="reveal">
-<h2>About Us</h2>
-<p>We deliver premium education with digital classrooms, expert teachers and result oriented programs.</p>
-</section>
-
-<section class="reveal">
 <h2>Our Labs</h2>
 <div class="labs">
-<img src="lab 1.jpg">
+<img src="Lab 1.jpg">
 <img src="lab 2.jpg">
 <img src="lab 3.jpg">
 </div>
 </section>
 
-<section id="pricing" class="reveal">
-<h2>Pricing</h2>
-<div class="grid">
-<div class="card"><h3>Starter</h3><p class="price">₹999</p></div>
-<div class="card"><h3>Pro</h3><p class="price">₹1999</p></div>
-<div class="card"><h3>Elite</h3><p class="price">₹2999</p></div>
-</div>
-</section>
-
 <section class="reveal">
-<h2>Student Reviews</h2>
+<h2>Courses & Pricing</h2>
 <div class="grid">
-<div class="card">“Best coaching in town!”</div>
-<div class="card">“Amazing teachers & support.”</div>
-<div class="card">“My results improved fast.”</div>
+<div class="card"><h3>Foundation</h3><p class="price">₹999</p></div>
+<div class="card"><h3>Pro Batch</h3><p class="price">₹1999</p></div>
+<div class="card"><h3>Elite Batch</h3><p class="price">₹2999</p></div>
 </div>
 </section>
 
 <section id="contact" class="reveal">
-<h2>Contact</h2>
+<h2>Contact Us</h2>
 <input placeholder="Name">
 <input placeholder="Phone">
 <textarea placeholder="Message"></textarea><br>
 <a class="btn">Submit</a>
 </section>
 
-<section class="reveal">
-<iframe width="100%" height="250"
-src="https://maps.google.com/maps?q=patna&t=&z=13&ie=UTF8&iwloc=&output=embed">
-</iframe>
-</section>
+<footer>
+<h3>Elite Coaching Institute</h3>
+<p>Patna • Bihar</p>
+<p>Smart Education | Career Focused</p>
+<p>© 2026 All Rights Reserved</p>
+</footer>
 
-<a class="whatsapp"><img src="Whatsapp logo.png"></a>
+<a class="whatsapp">
+<img src="Whatsapp logo.png">
+</a>
 
 <script>
-setTimeout(()=>splash.style.display="none",5000);
-
-let i=0,imgs=document.querySelectorAll(".slides img");
+// carousel
+let i=0,imgs=document.querySelectorAll(".carousel img");
 setInterval(()=>{
 imgs[i].classList.remove("active");
 i=(i+1)%imgs.length;
 imgs[i].classList.add("active");
 },3000);
 
-function dark(){
-document.body.classList.toggle("dark");
-localStorage.theme=document.body.classList.contains("dark");
-}
-if(localStorage.theme=="true")document.body.classList.add("dark");
+// dark mode
+function dark(){document.body.classList.toggle("dark")}
 
+// reveal
 window.addEventListener("scroll",()=>{
 document.querySelectorAll(".reveal").forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-50)
+if(el.getBoundingClientRect().top<window.innerHeight-80)
 el.classList.add("active");
 });
 });

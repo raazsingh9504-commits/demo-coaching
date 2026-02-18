@@ -1,82 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite Coaching Institute</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elite Coaching</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:Inter;background:#f6f8fc;color:#111;transition:.3s}
-.dark{background:#0e0e12;color:#fff}
+body{font-family:Inter;background:#0e0e12;color:white}
 
-/* NAVBAR (GLASS) */
+/* Glass Navbar */
 nav{
-position:fixed;top:0;width:100%;z-index:999;
-background:rgba(255,255,255,.7);
+position:fixed;top:0;width:100%;
+background:rgba(0,0,0,.6);
 backdrop-filter:blur(15px);
-display:flex;justify-content:space-between;align-items:center;
-padding:14px 20px;
+display:flex;justify-content:space-between;
+padding:15px 20px;z-index:999
 }
-.dark nav{background:rgba(0,0,0,.6)}
-nav b{font-size:18px}
-.btn{background:#2563eb;color:white;padding:10px 22px;border-radius:30px;text-decoration:none}
+.btn{background:#2563eb;padding:10px 22px;border-radius:30px;color:white;text-decoration:none}
 
-/* HERO IMAGE */
-.hero{margin-top:70px;width:100%;aspect-ratio:16/9;overflow:hidden}
+/* Hero */
+.hero{margin-top:60px;width:100%;aspect-ratio:16/9}
 .hero img{width:100%;height:100%;object-fit:cover}
 
-/* SECTIONS */
-section{padding:70px 20px;text-align:center}
+/* Sections */
+section{text-align:center;padding:70px 20px}
 h2{font-size:32px;margin-bottom:15px}
-p{opacity:.8}
 
-/* CAROUSEL */
-.carousel{max-width:1100px;margin:40px auto;border-radius:18px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.15)}
-.carousel img{width:100%;display:none}
-.carousel img.active{display:block}
+/* Carousel */
+.carousel{max-width:1100px;margin:auto;overflow:hidden;border-radius:18px;position:relative}
+.track{display:flex;transition:.5s}
+.track img{width:100%;flex-shrink:0}
 
-/* LABS */
-.labs{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
-.labs img{width:300px;max-width:90%;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,.15)}
+/* dots */
+.dots{text-align:center;margin-top:10px}
+.dot{
+height:10px;width:10px;border-radius:50%;
+background:#555;display:inline-block;margin:4px
+}
+.dot.active{background:#2563eb}
 
-/* GRID */
+/* Cards */
 .grid{display:grid;gap:25px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:1100px;margin:auto}
 .card{
-background:white;padding:30px;border-radius:20px;
-box-shadow:0 15px 35px rgba(0,0,0,.12);
-transition:.3s
+background:#16161d;padding:30px;border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.4)
 }
-.card:hover{transform:translateY(-10px)}
-.dark .card{background:#18181f}
-.price{font-size:28px;color:#2563eb;font-weight:700}
+.price{font-size:26px;color:#3b82f6}
 
-/* CONTACT */
+/* Labs */
+.labs{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
+.labs img{width:300px;border-radius:15px}
+
+/* Contact */
 input,textarea{
 width:90%;max-width:500px;padding:12px;margin:10px;
-border-radius:10px;border:1px solid #ccc
+border-radius:10px;border:none
 }
 
-/* FOOTER */
-footer{
-background:#0f172a;color:white;padding:40px 20px;text-align:center
-}
-footer p{opacity:.7}
+/* Map */
+iframe{border-radius:15px}
 
-/* WHATSAPP */
+/* Footer */
+footer{background:#020617;padding:40px;text-align:center}
+
+/* WhatsApp */
 .whatsapp{position:fixed;right:20px;bottom:20px}
 .whatsapp img{width:55px}
 
-/* DARK TOGGLE */
-.toggle{
-position:fixed;left:20px;bottom:20px;
-background:black;color:white;padding:8px 12px;border-radius:10px
-}
-
-/* REVEAL */
+/* reveal */
 .reveal{opacity:0;transform:translateY(40px);transition:1s}
 .reveal.active{opacity:1;transform:none}
 </style>
@@ -86,12 +81,9 @@ background:black;color:white;padding:8px 12px;border-radius:10px
 
 <nav>
 <b>Elite Coaching</b>
-<a class="btn" href="#contact">Enroll Now</a>
+<a class="btn" href="#contact">Enroll</a>
 </nav>
 
-<div class="toggle" onclick="dark()">🌙</div>
-
-<!-- HERO -->
 <div class="hero">
 <img src="Holder.png">
 </div>
@@ -101,45 +93,54 @@ background:black;color:white;padding:8px 12px;border-radius:10px
 <p>Smart Classes • Expert Faculty • Proven Results</p>
 </section>
 
-<!-- CAROUSEL -->
-<div class="carousel reveal">
-<img src="Screen 1.jpg" class="active">
+<!-- Carousel -->
+<div class="carousel reveal" id="carousel">
+<div class="track">
+<img src="Screen 1.jpg">
 <img src="screen 2.jpg">
 <img src="screen 3.jpg">
 <img src="screen 4.jpg">
 <img src="screen 5.jpg">
 </div>
+</div>
+<div class="dots"></div>
 
 <section class="reveal">
 <h2>Our Labs</h2>
 <div class="labs">
-<img src="Lab 1.jpg">
+<img src="lab 1.jpg">
 <img src="lab 2.jpg">
 <img src="lab 3.jpg">
 </div>
 </section>
 
 <section class="reveal">
-<h2>Courses & Pricing</h2>
+<h2>Courses</h2>
 <div class="grid">
-<div class="card"><h3>Foundation</h3><p class="price">₹999</p></div>
-<div class="card"><h3>Pro Batch</h3><p class="price">₹1999</p></div>
-<div class="card"><h3>Elite Batch</h3><p class="price">₹2999</p></div>
+<div class="card"><h3>Foundation</h3><p class="price">₹5999</p></div>
+<div class="card"><h3>Pro</h3><p class="price">₹16999</p></div>
+<div class="card"><h3>Elite</h3><p class="price">₹29999</p></div>
 </div>
 </section>
 
 <section id="contact" class="reveal">
-<h2>Contact Us</h2>
+<h2>Contact</h2>
 <input placeholder="Name">
 <input placeholder="Phone">
 <textarea placeholder="Message"></textarea><br>
 <a class="btn">Submit</a>
 </section>
 
+<section class="reveal">
+<h2>Our Location</h2>
+<iframe width="100%" height="250"
+src="https://maps.google.com/maps?q=patna&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+</section>
+
 <footer>
 <h3>Elite Coaching Institute</h3>
 <p>Patna • Bihar</p>
-<p>Smart Education | Career Focused</p>
 <p>© 2026 All Rights Reserved</p>
 </footer>
 
@@ -148,18 +149,37 @@ background:black;color:white;padding:8px 12px;border-radius:10px
 </a>
 
 <script>
-// carousel
-let i=0,imgs=document.querySelectorAll(".carousel img");
-setInterval(()=>{
-imgs[i].classList.remove("active");
-i=(i+1)%imgs.length;
-imgs[i].classList.add("active");
-},3000);
+const track=document.querySelector(".track");
+const slides=document.querySelectorAll(".track img");
+const dots=document.querySelector(".dots");
+let index=0,startX=0;
 
-// dark mode
-function dark(){document.body.classList.toggle("dark")}
+slides.forEach((_,i)=>{
+let d=document.createElement("span");
+d.className="dot";
+if(i==0)d.classList.add("active");
+dots.appendChild(d);
+});
 
-// reveal
+function update(){
+track.style.transform=`translateX(-${index*100}%)`;
+document.querySelectorAll(".dot").forEach((d,i)=>{
+d.classList.toggle("active",i==index);
+});
+}
+
+setInterval(()=>{index=(index+1)%slides.length;update()},3500);
+
+/* Swipe */
+track.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+track.addEventListener("touchend",e=>{
+let dx=e.changedTouches[0].clientX-startX;
+if(dx<-50)index=(index+1)%slides.length;
+if(dx>50)index=(index-1+slides.length)%slides.length;
+update();
+});
+
+/* Reveal */
 window.addEventListener("scroll",()=>{
 document.querySelectorAll(".reveal").forEach(el=>{
 if(el.getBoundingClientRect().top<window.innerHeight-80)
